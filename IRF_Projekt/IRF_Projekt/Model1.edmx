@@ -1,0 +1,329 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BeadandóModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Foglalasok">
+          <Key>
+            <PropertyRef Name="FoglalasokSK" />
+          </Key>
+          <Property Name="FoglalasokSK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UgyfelekFK" Type="int" Nullable="false" />
+          <Property Name="Kezdete" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="Vege" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="GepjarmuFK" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Gepjarmu">
+          <Key>
+            <PropertyRef Name="gepjarmuSK" />
+          </Key>
+          <Property Name="gepjarmuSK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipusFK" Type="int" Nullable="false" />
+          <Property Name="Rendszam" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Szin" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Serulesek">
+          <Key>
+            <PropertyRef Name="SerulesSK" />
+          </Key>
+          <Property Name="SerulesSK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GepjarmuFK" Type="int" Nullable="false" />
+          <Property Name="Helye" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tipusa" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TipusAr">
+          <Key>
+            <PropertyRef Name="TipusSK" />
+          </Key>
+          <Property Name="TipusSK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ar1napra" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ugyfelek">
+          <Key>
+            <PropertyRef Name="UgyfelekID" />
+          </Key>
+          <Property Name="UgyfelekID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nev" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Szuldat" Type="datetime" Nullable="false" />
+          <Property Name="Telefon" Type="varchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Foglalasok_Gepjarmu">
+          <End Role="Gepjarmu" Type="Self.Gepjarmu" Multiplicity="1" />
+          <End Role="Foglalasok" Type="Self.Foglalasok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gepjarmu">
+              <PropertyRef Name="gepjarmuSK" />
+            </Principal>
+            <Dependent Role="Foglalasok">
+              <PropertyRef Name="GepjarmuFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Foglalasok_Ugyfelek">
+          <End Role="Ugyfelek" Type="Self.Ugyfelek" Multiplicity="1" />
+          <End Role="Foglalasok" Type="Self.Foglalasok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ugyfelek">
+              <PropertyRef Name="UgyfelekID" />
+            </Principal>
+            <Dependent Role="Foglalasok">
+              <PropertyRef Name="UgyfelekFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gepjarmu_TipusAr">
+          <End Role="TipusAr" Type="Self.TipusAr" Multiplicity="1" />
+          <End Role="Gepjarmu" Type="Self.Gepjarmu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipusAr">
+              <PropertyRef Name="TipusSK" />
+            </Principal>
+            <Dependent Role="Gepjarmu">
+              <PropertyRef Name="TipusFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Serulesek_Gepjarmu">
+          <End Role="Gepjarmu" Type="Self.Gepjarmu" Multiplicity="1" />
+          <End Role="Serulesek" Type="Self.Serulesek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gepjarmu">
+              <PropertyRef Name="gepjarmuSK" />
+            </Principal>
+            <Dependent Role="Serulesek">
+              <PropertyRef Name="GepjarmuFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BeadandóModelStoreContainer">
+          <EntitySet Name="Foglalasok" EntityType="Self.Foglalasok" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gepjarmu" EntityType="Self.Gepjarmu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Serulesek" EntityType="Self.Serulesek" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipusAr" EntityType="Self.TipusAr" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ugyfelek" EntityType="Self.Ugyfelek" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Foglalasok_Gepjarmu" Association="Self.FK_Foglalasok_Gepjarmu">
+            <End Role="Gepjarmu" EntitySet="Gepjarmu" />
+            <End Role="Foglalasok" EntitySet="Foglalasok" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Foglalasok_Ugyfelek" Association="Self.FK_Foglalasok_Ugyfelek">
+            <End Role="Ugyfelek" EntitySet="Ugyfelek" />
+            <End Role="Foglalasok" EntitySet="Foglalasok" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gepjarmu_TipusAr" Association="Self.FK_Gepjarmu_TipusAr">
+            <End Role="TipusAr" EntitySet="TipusAr" />
+            <End Role="Gepjarmu" EntitySet="Gepjarmu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Serulesek_Gepjarmu" Association="Self.FK_Serulesek_Gepjarmu">
+            <End Role="Gepjarmu" EntitySet="Gepjarmu" />
+            <End Role="Serulesek" EntitySet="Serulesek" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BeadandóModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Foglalasok">
+          <Key>
+            <PropertyRef Name="FoglalasokSK" />
+          </Key>
+          <Property Name="FoglalasokSK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UgyfelekFK" Type="Int32" Nullable="false" />
+          <Property Name="Kezdete" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="Vege" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="GepjarmuFK" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Gepjarmu" Relationship="Self.FK_Foglalasok_Gepjarmu" FromRole="Foglalasok" ToRole="Gepjarmu" />
+          <NavigationProperty Name="Ugyfelek" Relationship="Self.FK_Foglalasok_Ugyfelek" FromRole="Foglalasok" ToRole="Ugyfelek" />
+        </EntityType>
+        <EntityType Name="Gepjarmu">
+          <Key>
+            <PropertyRef Name="gepjarmuSK" />
+          </Key>
+          <Property Name="gepjarmuSK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipusFK" Type="Int32" Nullable="false" />
+          <Property Name="Rendszam" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Szin" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Foglalasok" Relationship="Self.FK_Foglalasok_Gepjarmu" FromRole="Gepjarmu" ToRole="Foglalasok" />
+          <NavigationProperty Name="TipusAr" Relationship="Self.FK_Gepjarmu_TipusAr" FromRole="Gepjarmu" ToRole="TipusAr" />
+          <NavigationProperty Name="Serulesek" Relationship="Self.FK_Serulesek_Gepjarmu" FromRole="Gepjarmu" ToRole="Serulesek" />
+        </EntityType>
+        <EntityType Name="Serulesek">
+          <Key>
+            <PropertyRef Name="SerulesSK" />
+          </Key>
+          <Property Name="SerulesSK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GepjarmuFK" Type="Int32" Nullable="false" />
+          <Property Name="Helye" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tipusa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Gepjarmu" Relationship="Self.FK_Serulesek_Gepjarmu" FromRole="Serulesek" ToRole="Gepjarmu" />
+        </EntityType>
+        <EntityType Name="TipusAr">
+          <Key>
+            <PropertyRef Name="TipusSK" />
+          </Key>
+          <Property Name="TipusSK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ar1napra" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <NavigationProperty Name="Gepjarmu" Relationship="Self.FK_Gepjarmu_TipusAr" FromRole="TipusAr" ToRole="Gepjarmu" />
+        </EntityType>
+        <EntityType Name="Ugyfelek">
+          <Key>
+            <PropertyRef Name="UgyfelekID" />
+          </Key>
+          <Property Name="UgyfelekID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nev" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Szuldat" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Telefon" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Foglalasok" Relationship="Self.FK_Foglalasok_Ugyfelek" FromRole="Ugyfelek" ToRole="Foglalasok" />
+        </EntityType>
+        <Association Name="FK_Foglalasok_Gepjarmu">
+          <End Role="Gepjarmu" Type="Self.Gepjarmu" Multiplicity="1" />
+          <End Role="Foglalasok" Type="Self.Foglalasok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gepjarmu">
+              <PropertyRef Name="gepjarmuSK" />
+            </Principal>
+            <Dependent Role="Foglalasok">
+              <PropertyRef Name="GepjarmuFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Foglalasok_Ugyfelek">
+          <End Role="Ugyfelek" Type="Self.Ugyfelek" Multiplicity="1" />
+          <End Role="Foglalasok" Type="Self.Foglalasok" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ugyfelek">
+              <PropertyRef Name="UgyfelekID" />
+            </Principal>
+            <Dependent Role="Foglalasok">
+              <PropertyRef Name="UgyfelekFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gepjarmu_TipusAr">
+          <End Role="TipusAr" Type="Self.TipusAr" Multiplicity="1" />
+          <End Role="Gepjarmu" Type="Self.Gepjarmu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipusAr">
+              <PropertyRef Name="TipusSK" />
+            </Principal>
+            <Dependent Role="Gepjarmu">
+              <PropertyRef Name="TipusFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Serulesek_Gepjarmu">
+          <End Role="Gepjarmu" Type="Self.Gepjarmu" Multiplicity="1" />
+          <End Role="Serulesek" Type="Self.Serulesek" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Gepjarmu">
+              <PropertyRef Name="gepjarmuSK" />
+            </Principal>
+            <Dependent Role="Serulesek">
+              <PropertyRef Name="GepjarmuFK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BeadandóEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Foglalasok" EntityType="Self.Foglalasok" />
+          <EntitySet Name="Gepjarmu" EntityType="Self.Gepjarmu" />
+          <EntitySet Name="Serulesek" EntityType="Self.Serulesek" />
+          <EntitySet Name="TipusAr" EntityType="Self.TipusAr" />
+          <EntitySet Name="Ugyfelek" EntityType="Self.Ugyfelek" />
+          <AssociationSet Name="FK_Foglalasok_Gepjarmu" Association="Self.FK_Foglalasok_Gepjarmu">
+            <End Role="Gepjarmu" EntitySet="Gepjarmu" />
+            <End Role="Foglalasok" EntitySet="Foglalasok" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Foglalasok_Ugyfelek" Association="Self.FK_Foglalasok_Ugyfelek">
+            <End Role="Ugyfelek" EntitySet="Ugyfelek" />
+            <End Role="Foglalasok" EntitySet="Foglalasok" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gepjarmu_TipusAr" Association="Self.FK_Gepjarmu_TipusAr">
+            <End Role="TipusAr" EntitySet="TipusAr" />
+            <End Role="Gepjarmu" EntitySet="Gepjarmu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Serulesek_Gepjarmu" Association="Self.FK_Serulesek_Gepjarmu">
+            <End Role="Gepjarmu" EntitySet="Gepjarmu" />
+            <End Role="Serulesek" EntitySet="Serulesek" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BeadandóModelStoreContainer" CdmEntityContainer="BeadandóEntities">
+          <EntitySetMapping Name="Foglalasok">
+            <EntityTypeMapping TypeName="BeadandóModel.Foglalasok">
+              <MappingFragment StoreEntitySet="Foglalasok">
+                <ScalarProperty Name="FoglalasokSK" ColumnName="FoglalasokSK" />
+                <ScalarProperty Name="UgyfelekFK" ColumnName="UgyfelekFK" />
+                <ScalarProperty Name="Kezdete" ColumnName="Kezdete" />
+                <ScalarProperty Name="Vege" ColumnName="Vege" />
+                <ScalarProperty Name="GepjarmuFK" ColumnName="GepjarmuFK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gepjarmu">
+            <EntityTypeMapping TypeName="BeadandóModel.Gepjarmu">
+              <MappingFragment StoreEntitySet="Gepjarmu">
+                <ScalarProperty Name="gepjarmuSK" ColumnName="gepjarmuSK" />
+                <ScalarProperty Name="TipusFK" ColumnName="TipusFK" />
+                <ScalarProperty Name="Rendszam" ColumnName="Rendszam" />
+                <ScalarProperty Name="Szin" ColumnName="Szin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Serulesek">
+            <EntityTypeMapping TypeName="BeadandóModel.Serulesek">
+              <MappingFragment StoreEntitySet="Serulesek">
+                <ScalarProperty Name="SerulesSK" ColumnName="SerulesSK" />
+                <ScalarProperty Name="GepjarmuFK" ColumnName="GepjarmuFK" />
+                <ScalarProperty Name="Helye" ColumnName="Helye" />
+                <ScalarProperty Name="Tipusa" ColumnName="Tipusa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipusAr">
+            <EntityTypeMapping TypeName="BeadandóModel.TipusAr">
+              <MappingFragment StoreEntitySet="TipusAr">
+                <ScalarProperty Name="TipusSK" ColumnName="TipusSK" />
+                <ScalarProperty Name="Ar1napra" ColumnName="Ar1napra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ugyfelek">
+            <EntityTypeMapping TypeName="BeadandóModel.Ugyfelek">
+              <MappingFragment StoreEntitySet="Ugyfelek">
+                <ScalarProperty Name="UgyfelekID" ColumnName="UgyfelekID" />
+                <ScalarProperty Name="Nev" ColumnName="Nev" />
+                <ScalarProperty Name="Szuldat" ColumnName="Szuldat" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
