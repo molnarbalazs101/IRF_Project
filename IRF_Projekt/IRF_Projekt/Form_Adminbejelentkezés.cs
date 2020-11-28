@@ -16,5 +16,19 @@ namespace IRF_Projekt
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (jelszo.Text == "password123" & felhnev.Text == "admin1")
+            {
+                FormDolgozo d = new FormDolgozo();
+                d.ShowDialog();
+            }
+
+            else
+            {
+                MessageBox.Show("Helytelen felhasználónevet vagy jelszót adott meg! Kérjük próbálja újra!");
+            }
+        }
     }
 }
