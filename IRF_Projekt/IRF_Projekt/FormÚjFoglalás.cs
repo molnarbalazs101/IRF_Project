@@ -60,7 +60,7 @@ namespace IRF_Projekt
                 context.Foglalasok.Add(foglalas);
                 context.SaveChanges();
 
-                MessageBox.Show("A foglalás sikeresen megörtént");
+                MessageBox.Show("A foglalás sikeresen megtörtént");
             }
             catch (Exception ex)
             {
@@ -69,6 +69,12 @@ namespace IRF_Projekt
             }
 
             dataGridView1.Refresh();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AdottUgyfelFoglalásai foglalas = new AdottUgyfelFoglalásai(BejelentkezettUser);
+            foglalas.ShowDialog();
         }
     }
 }

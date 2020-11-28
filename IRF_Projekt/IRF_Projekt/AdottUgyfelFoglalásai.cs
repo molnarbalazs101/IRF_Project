@@ -12,9 +12,30 @@ namespace IRF_Projekt
 {
     public partial class AdottUgyfelFoglalásai : Form
     {
-        public AdottUgyfelFoglalásai()
+        BeadandóEntities context = new BeadandóEntities();
+        Ugyfelek BejelentkezettUser;
+
+        public AdottUgyfelFoglalásai(Ugyfelek BejelentkezettUser)
         {
             InitializeComponent();
+
+            this.BejelentkezettUser = BejelentkezettUser;
+
+            label1.Text = BejelentkezettUser.Nev;
+
+            var FoglalasokListazasa = from x in context.Foglalasok
+                                      where x.UgyfelekFK == BejelentkezettUser.UgyfelekID
+                                      select new
+                                      {
+                                          x.Kezdete,
+                                          x.Vege,
+                                          x.Gepjarmu.Rendszam,
+                                          x.Gepjarmu.Szin,
+                                          x.Gepjarmu.TipusAr.Ar1napra
+
+                                      };
+
+           dataGridView1.DataSource = FoglalasokListazasa.ToList();
         }
     }
 }
