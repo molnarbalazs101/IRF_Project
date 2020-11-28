@@ -10,11 +10,23 @@ using System.Windows.Forms;
 
 namespace IRF_Projekt
 {
-    public partial class Form1 : Form
+    public partial class FormÜdvözlés : Form
     {
-        public Form1()
+        public FormÜdvözlés()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form_Adminbejelentkezés admin = new Form_Adminbejelentkezés();
+            admin.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            FormUgyfelLogin ugyfel = new FormUgyfelLogin();
+            ugyfel.ShowDialog();
         }
     }
 }
