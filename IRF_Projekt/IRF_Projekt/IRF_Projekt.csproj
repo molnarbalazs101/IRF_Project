@@ -85,6 +85,12 @@
     <Compile Include="FormUgyfelLogin.Designer.cs">
       <DependentUpon>FormUgyfelLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormUjUgyfel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUjUgyfel.Designer.cs">
+      <DependentUpon>FormUjUgyfel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form_Adminbejelentkezés.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormUgyfelLogin.resx">
       <DependentUpon>FormUgyfelLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUjUgyfel.resx">
+      <DependentUpon>FormUjUgyfel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Adminbejelentkezés.resx">
       <DependentUpon>Form_Adminbejelentkezés.cs</DependentUpon>
