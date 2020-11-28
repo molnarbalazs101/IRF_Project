@@ -141,6 +141,18 @@
     <Compile Include="TipusAr.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="ucFoglalasok.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucFoglalasok.Designer.cs">
+      <DependentUpon>ucFoglalasok.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucSerules.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucSerules.Designer.cs">
+      <DependentUpon>ucSerules.cs</DependentUpon>
+    </Compile>
     <Compile Include="Ugyfelek.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -174,6 +186,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ucFoglalasok.resx">
+      <DependentUpon>ucFoglalasok.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucSerules.resx">
+      <DependentUpon>ucSerules.cs</DependentUpon>
+    </EmbeddedResource>
     <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>

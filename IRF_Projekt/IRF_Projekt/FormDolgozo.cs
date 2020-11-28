@@ -22,5 +22,12 @@ namespace IRF_Projekt
             FormUjUgyfel ujugyfel =new FormUjUgyfel();
             ujugyfel.ShowDialog();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ucFoglalasok ucfogl = new ucFoglalasok();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(ucfogl);
+        }
     }
 }
