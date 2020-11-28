@@ -29,5 +29,11 @@ namespace IRF_Projekt
             panel1.Controls.Clear();
             panel1.Controls.Add(ucfogl);
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Statisztika stat = new Statisztika();
+            stat.ShowDialog();
+        }
     }
 }
