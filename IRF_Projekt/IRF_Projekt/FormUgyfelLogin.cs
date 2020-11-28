@@ -36,7 +36,7 @@ namespace IRF_Projekt
 
             {
 
-                FormÚjFoglalás ujfoglalas = new FormÚjFoglalás();
+                FormÚjFoglalás ujfoglalas = new FormÚjFoglalás(Ugyfel);
                 ujfoglalas.Show();
 
             }
