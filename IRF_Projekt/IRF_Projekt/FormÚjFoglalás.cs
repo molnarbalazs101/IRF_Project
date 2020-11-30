@@ -15,13 +15,20 @@ namespace IRF_Projekt
     {
         BeadandóEntities context = new BeadandóEntities();
 
+    
+
         Ugyfelek BejelentkezettUser;
 
         public FormÚjFoglalás(Ugyfelek BejelentkezettUser)
         {
             InitializeComponent();
+
+            
+
             this.BejelentkezettUser = BejelentkezettUser;
             label2.Text = BejelentkezettUser.Nev;
+
+            nyeremenyCheck();
 
             var AutókListázása = from x in context.Gepjarmu
 
@@ -69,7 +76,11 @@ namespace IRF_Projekt
             }
 
             dataGridView1.Refresh();
+
+            nyeremenyCheck();
         }
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -82,10 +93,35 @@ namespace IRF_Projekt
             Form_nyereményjáték nyeremeny = new Form_nyereményjáték();
             nyeremeny.Show();
 
+
+
             
+
+
         }
 
-       
+        private void nyeremenyCheck()
+        {
+            var foglalasszam = (from x in context.Foglalasok
+                        where x.UgyfelekFK == BejelentkezettUser.UgyfelekID
+                        select x.FoglalasokSK).Count();
+
+            if (foglalasszam > 5)
+            {
+                button3.Visible = true;
+            }
+            else
+            {
+
+                button3.Visible = false;
+
+            }
+            
+
+
+
+
+        }
         
     }
 

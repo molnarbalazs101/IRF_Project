@@ -23,7 +23,10 @@ namespace IRF_Projekt
         {
             Random rnd = new Random();
             int Number = rnd.Next(0, 10);
-            MessageBox.Show(rnd.ToString());
+            MessageBox.Show(Number.ToString());
+
+            
+           
         }
     }
 }
