@@ -44,7 +44,9 @@ namespace IRF_Projekt
 
             series.XValueMember = "Month";
             series.YValueMembers = "Count";
+
             
+
 
 
 
