@@ -110,6 +110,12 @@
     <Compile Include="Form_Adminbejelentkezés.Designer.cs">
       <DependentUpon>Form_Adminbejelentkezés.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form_nyereményjáték.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_nyereményjáték.Designer.cs">
+      <DependentUpon>Form_nyereményjáték.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormÚjFoglalás.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +186,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Adminbejelentkezés.resx">
       <DependentUpon>Form_Adminbejelentkezés.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_nyereményjáték.resx">
+      <DependentUpon>Form_nyereményjáték.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormÚjFoglalás.resx">
       <DependentUpon>FormÚjFoglalás.cs</DependentUpon>

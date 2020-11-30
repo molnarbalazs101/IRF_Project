@@ -76,5 +76,18 @@ namespace IRF_Projekt
             AdottUgyfelFoglalásai foglalas = new AdottUgyfelFoglalásai(BejelentkezettUser);
             foglalas.ShowDialog();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form_nyereményjáték nyeremeny = new Form_nyereményjáték();
+            nyeremeny.Show();
+
+            
+        }
+
+       
+        
     }
+
+    
 }

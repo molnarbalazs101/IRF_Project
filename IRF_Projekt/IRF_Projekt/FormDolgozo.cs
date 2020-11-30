@@ -35,5 +35,13 @@ namespace IRF_Projekt
             Statisztika stat = new Statisztika();
             stat.ShowDialog();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            ucSerules ucserules = new ucSerules();
+            panel1.Controls.Clear();
+            panel1.Controls.Add(ucserules);
+            ucserules.Dock = DockStyle.Fill;
+        }
     }
 }
