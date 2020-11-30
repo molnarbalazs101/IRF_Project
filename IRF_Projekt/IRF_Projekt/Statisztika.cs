@@ -39,13 +39,16 @@ namespace IRF_Projekt
             chart1.DataSource = eredmeny.ToList();
 
             var series = chart1.Series[0];
-           series.ChartType = SeriesChartType.Column;
+            series.ChartType = SeriesChartType.Column;
             series.BorderWidth = 2;
 
             series.XValueMember = "Month";
             series.YValueMembers = "Count";
 
-            
+            var legend = chart1.Legends[0];
+            legend.Enabled = false;
+
+
 
 
 

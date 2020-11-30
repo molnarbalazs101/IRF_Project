@@ -22,7 +22,7 @@ namespace IRF_Projekt
         private void button1_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            int Number = rnd.Next(0, 10);
+            int Number = rnd.Next(0, 20);
             MessageBox.Show(Number.ToString());
 
             if (Number > 0 & Number < 10)

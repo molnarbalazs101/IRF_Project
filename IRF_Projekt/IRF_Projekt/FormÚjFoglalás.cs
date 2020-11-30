@@ -92,12 +92,6 @@ namespace IRF_Projekt
         {
             Form_nyereményjáték nyeremeny = new Form_nyereményjáték();
             nyeremeny.Show();
-
-
-
-            
-
-
         }
 
         private void nyeremenyCheck()
@@ -106,7 +100,7 @@ namespace IRF_Projekt
                         where x.UgyfelekFK == BejelentkezettUser.UgyfelekID
                         select x.FoglalasokSK).Count();
 
-            if (foglalasszam > 5)
+            if (foglalasszam > 4)
             {
                 button3.Visible = true;
             }
