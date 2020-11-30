@@ -25,6 +25,15 @@ namespace IRF_Projekt
             int Number = rnd.Next(0, 10);
             MessageBox.Show(Number.ToString());
 
+            if (Number > 0 & Number < 10)
+            {
+                MessageBox.Show("Gratulálunk Ön nyert!");
+            }
+            else
+            {
+                MessageBox.Show("Sajnáljuk most nem nyert!");
+            }
+
             
            
         }
