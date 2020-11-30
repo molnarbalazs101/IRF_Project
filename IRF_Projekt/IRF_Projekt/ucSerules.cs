@@ -82,5 +82,32 @@ namespace IRF_Projekt
             textBox2.Clear();
             textBox3.Clear();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+            dynamic aktuális = bindingSource1.Current;
+            int rid = aktuális.SerulesSK;
+
+            var törlendő = (from x in context.Serulesek
+                            where x.SerulesSK == rid
+                            select x).FirstOrDefault();
+
+            if (törlendő == null) return;
+
+            context.Serulesek.Remove(törlendő);
+
+            try
+            {
+                context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                
+            }
+
+            Listazas();
+        }
     }
 }
