@@ -27,11 +27,11 @@ namespace IRF_Projekt
 
             if (Number > 0 & Number < 10)
             {
-                MessageBox.Show("Gratulálunk Ön nyert!");
+                MessageBox.Show(  $"{rnd.Next(27)}Gratulálunk Ön nyert!");
             }
             else
             {
-                MessageBox.Show("Sajnáljuk most nem nyert!");
+                MessageBox.Show(string.Format("Sajnáljuk most nem nyert!{0},",13));
             }
 
             
