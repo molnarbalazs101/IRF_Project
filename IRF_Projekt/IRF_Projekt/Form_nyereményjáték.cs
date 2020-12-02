@@ -23,15 +23,17 @@ namespace IRF_Projekt
         {
             Random rnd = new Random();
             int Number = rnd.Next(0, 20);
-            MessageBox.Show(Number.ToString());
+            
 
             if (Number > 0 & Number < 10)
             {
-                MessageBox.Show(  $"{rnd.Next(27)}Gratulálunk Ön nyert!");
+                
+                MessageBox.Show($"Gratulálunk Ön nyert!1 napra ingyen elvihető autó sorszáma: {Number.ToString()}");
             }
             else
             {
-                MessageBox.Show(string.Format("Sajnáljuk most nem nyert!{0},",13));
+                
+                MessageBox.Show($"Sajnáljuk Ön most nem nyert! Az Ön számára kisorsolt szám a következő volt: {Number.ToString()}");
             }
 
             
