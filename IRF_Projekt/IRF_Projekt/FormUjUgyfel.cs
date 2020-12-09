@@ -84,8 +84,8 @@ namespace IRF_Projekt
                 e.Cancel = true;
                 txtTelefon.BackColor = Color.Red;
                 MessageBox.Show("Kérjük adjon meg egy érvényes telefonszámot!");
-
             }
+
         }
 
         

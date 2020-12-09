@@ -23,8 +23,6 @@ namespace IRF_Projekt
         {
             InitializeComponent();
 
-
-
             var eredmeny = from x in context.Foglalasok
                            group x by x.Kezdete.Month into g select new
                            {
@@ -47,16 +45,21 @@ namespace IRF_Projekt
 
             var legend = chart1.Legends[0];
             legend.Enabled = false;
-
-
-
-
-
-
-
-
-
         }
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
 
         
     }
